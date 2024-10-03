@@ -30,9 +30,13 @@ pipeline {
                 }
             }
         }
-        stage('contruccion image') {
-           steps {
-              script  {
-                sh docker     
-              }
+        stage('construccion imagen docker'){
+            steps{
+                script{
+                    sh 'docker build -t backend-base .'
+                    sh 'docker tag backend-base us-central1-docker.pkg.dev/expertis-classroom/docker-repository/backend-base:mm'
+                }
+            }
         }
+    }
+}
