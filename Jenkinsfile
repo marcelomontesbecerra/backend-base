@@ -3,10 +3,18 @@ pipeline {
     agent any
 
     stages {
-        stage('etapa 1') {
-            steps {
-                echo 'Jelou mundo desde jenkins'
-                sh 'echo "desde la terminal"'
+        stage('etapa de contruccion de aplicacion') {
+            agent {
+                docker {
+                    image 'node:alpine3.20'
+                }
+            }
+            stages {
+                stage('install') {
+                    steps {
+                        sh 'npm install'
+                    }
+                }
             }
         }
     }
