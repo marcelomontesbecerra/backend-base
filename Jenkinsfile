@@ -30,6 +30,9 @@ pipeline {
                 }
             }
         }
-    }
-    
-}
+        stage('contruccion image') {
+           steps {
+              script  {
+                sh docker     
+              }
+        }
